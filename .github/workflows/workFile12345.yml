@@ -58,10 +58,8 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_09C500142DDF4059AD1256D918FA3F9A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B29AFD2F59EB456E95871F0B348FB1D6 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F5A0D7BC52694F9FB98DEC438CBF789A }}
-
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -69,7 +67,4 @@ jobs:
           app-name: 'githubActionpublish'
           slot-name: 'Production'
           package: .
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_09C500142DDF4059AD1256D918FA3F9A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B29AFD2F59EB456E95871F0B348FB1D6 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F5A0D7BC52694F9FB98DEC438CBF789A }}
     
